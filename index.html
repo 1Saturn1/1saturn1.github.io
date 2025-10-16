@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Countdown Timer with Anime.js</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <style>
+    @font-face {
+        font-family: 'lcdfont';
+        src:url('./LCDMN___.ttf') format('truetype');
+    }
+    body {
+      font-family: 'lcdfont', sans-serif;
+      background-color: #222;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-size: 60px;
+    }
+  </style>
+</head>
+<body>
+  <div id="countdown" style="font-family: 'lcdfont'">10</div>
+  
+
+  <script>
+    const countdownObj = { value: 0 };
+
+    anime({
+      targets: countdownObj,
+      value: 10000, // Go from 0 to 10000
+      duration: 10000, // 10 seconds
+      easing: 'linear',
+      round: 1,
+      update: function() {
+        document.getElementById('countdown').innerText = countdownObj.value;
+      },
+      complete: function() {
+        document.getElementById('countdown').innerText = 'Time\'s up!';
+      }
+    });
+    
+  </script>
+</body>
+</html>
